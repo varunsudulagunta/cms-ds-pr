@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: cms-ds-pr-app
+    container_name: nodejs-app
+    restart: always
+    env_file: .env
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=${MONGODB_URI}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:5
+    container_name: mongo
+    restart: unless-stopped
+    ports:
+      - "3001:27017"
+    env_file: .env
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local

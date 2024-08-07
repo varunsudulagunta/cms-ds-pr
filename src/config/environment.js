@@ -1,0 +1,14 @@
+require('dotenv').config();
+
+module.exports = {
+  PORT: process.env.PORT || 3000,
+  MONGODB_URI: process.env.MONGODB_URI,
+  EBURY_API_URL: process.env.EBURY_API_URL,
+  EBURY_AUTH_URL: process.env.EBURY_AUTH_URL,
+  EBURY_CLIENT_ID: process.env.EBURY_CLIENT_ID,
+  EBURY_ACCOUNT_ID: process.env.EBURY_ACCOUNT_ID,
+  EBURY_CLIENT_SECRET: process.env.EBURY_CLIENT_SECRET,
+  EBURY_ACCOUNT_EMAIL:process.env.EBURY_ACCOUNT_EMAIL,
+  EBURY_ACCOUNT_PASSWORD:process.env.EBURY_ACCOUNT_PASSWORD,
+  DATABASE_NAME: process.env.DATABASE_NAME
+};
